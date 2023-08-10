@@ -15,4 +15,10 @@
     <string name="change_language">Change Language</string>
     <string name="change_language_content_desc">Change language</string>
     <string name="search_hint">Search for product …</string>
+    <string name="laptops_offers">Laptops Offers</string>
+    <string name="laptops">Laptops</string>
+    <string name="price_starts_from">price starts from</string>
+    <string name="laptop_price">6999 EGP</string>
+    <string name="shop_now">Shop Now</string>
+    <string name="laptop_image_content_desc">Laptop Image</string>
 </resources>

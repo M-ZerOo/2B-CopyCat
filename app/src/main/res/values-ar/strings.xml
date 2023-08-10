@@ -14,4 +14,10 @@
     <string name="change_language">تغيير اللغة</string>
     <string name="change_language_content_desc">تغيير اللغة</string>
     <string name="search_hint">بحث عن المنتج …</string>
+    <string name="laptops_offers">عروض اللابتوب</string>
+    <string name="laptops">لابتوب</string>
+    <string name="price_starts_from">سعر يبدأ من</string>
+    <string name="laptop_price">6999 ج.م</string>
+    <string name="shop_now">تسوق الآن</string>
+    <string name="laptop_image_content_desc">صورة لابتوب</string>
 </resources>
