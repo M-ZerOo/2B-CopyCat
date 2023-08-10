@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">الرئيسية</string>
+    <string name="categories">الفئات</string>
+    <string name="deals">العروض</string>
+    <string name="notifications">إشعارات</string>
+    <string name="account">الحساب</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="categories_fragment">Categories Fragment</string>
+    <string name="deals_fragment">Deals Fragment</string>
+    <string name="notifications_fragment">Notifications Fragment</string>
+    <string name="account_fragment">Account Fragment</string>
+    <string name="pref">التفضيلات</string>
+    <string name="change_language">تغيير اللغة</string>
+    <string name="change_language_content_desc">تغيير اللغة</string>
+    <string name="search_hint">بحث عن المنتج …</string>
+</resources>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name" translatable="false">2B CopyCat</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="deals">Deals</string>
+    <string name="notifications">Notifications</string>
+    <string name="account">Account</string>
+    <string name="home_fragment" translatable="false">Home Fragment</string>
+    <string name="categories_fragment" translatable="false">Categories Fragment</string>
+    <string name="deals_fragment" translatable="false">Deals Fragment</string>
+    <string name="notifications_fragment" translatable="false">Notifications Fragment</string>
+    <string name="account_fragment" translatable="false">Account Fragment</string>
+    <string name="search_fragment" translatable="false">Search Fragment</string>
+    <string name="pref">Preferences</string>
+    <string name="change_language">Change Language</string>
+    <string name="change_language_content_desc">Change language</string>
+    <string name="search_hint">Search for product …</string>
+</resources>
