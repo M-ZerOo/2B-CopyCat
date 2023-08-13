@@ -25,4 +25,11 @@
     <string name="filter">Filter</string>
     <string name="list">List</string>
     <string name="grid">Grid</string>
+    <string name="sort_by">Sort By</string>
+    <string name="position_low_to_high">Position Low To High</string>
+    <string name="position_high_to_low">Position High To Low</string>
+    <string name="price_low_to_high">Price Low To High</string>
+    <string name="price_high_to_low">Price High To Low</string>
+    <string name="quantity_low_to_high">Quantity Low To High</string>
+    <string name="quantity_high_to_low">Quantity High To Low</string>
 </resources>
