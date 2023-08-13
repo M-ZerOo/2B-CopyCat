@@ -1,20 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DealsFragment">
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sort_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/sort"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:icon="@drawable/sort_icon"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/filter_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/filter_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/filter"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:icon="@drawable/filter_icon"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/design_layout_button"
+        app:layout_constraintStart_toEndOf="@id/sort_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/design_layout_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/list"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:icon="@drawable/row_icon"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/filter_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/deals_fragment"
-        android:textColor="@color/black"
-        android:textSize="32sp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:spanCount="2"
+        tools:itemCount="5"
+        tools:listitem="@layout/deals_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

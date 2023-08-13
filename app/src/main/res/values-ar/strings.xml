@@ -20,4 +20,8 @@
     <string name="laptop_price">6999 ج.م</string>
     <string name="shop_now">تسوق الآن</string>
     <string name="laptop_image_content_desc">صورة لابتوب</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
 </resources>

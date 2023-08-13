@@ -21,4 +21,8 @@
     <string name="laptop_price">6999 EGP</string>
     <string name="shop_now">Shop Now</string>
     <string name="laptop_image_content_desc">Laptop Image</string>
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
 </resources>
