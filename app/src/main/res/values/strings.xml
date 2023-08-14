@@ -32,4 +32,7 @@
     <string name="price_high_to_low">Price High To Low</string>
     <string name="quantity_low_to_high">Quantity Low To High</string>
     <string name="quantity_high_to_low">Quantity High To Low</string>
+    <string name="filter_by">Filter By</string>
+    <string name="brand">Brand</string>
+    <string name="color">Color</string>
 </resources>

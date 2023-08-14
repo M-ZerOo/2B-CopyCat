@@ -53,6 +53,10 @@ class DealsFragment : Fragment() {
             sortBinding.quantityHTL.setOnClickListener { checkBox6Pressed() }
         }
 
+        binding.filterButton.setOnClickListener {
+            showFilterBottomSheet()
+        }
+
         return binding.root
     }
 
@@ -192,6 +196,11 @@ class DealsFragment : Fragment() {
         sortBinding.checkbox5.visibility = View.INVISIBLE
         sortBinding.checkbox6.visibility = View.VISIBLE
         sortBottomSheetDialog.hide()
+    }
+
+    private fun showFilterBottomSheet() {
+        val bottomSheetFragment = FilterBottomSheetFragment()
+        bottomSheetFragment.show(parentFragmentManager, null)
     }
 
 
