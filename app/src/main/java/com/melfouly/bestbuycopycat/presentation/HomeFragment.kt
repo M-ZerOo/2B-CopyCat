@@ -1,4 +1,4 @@
-package com.melfouly.bestbuycopycat
+package com.melfouly.bestbuycopycat.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.melfouly.bestbuycopycat.R
 import com.melfouly.bestbuycopycat.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding

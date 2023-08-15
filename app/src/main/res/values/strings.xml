@@ -35,4 +35,6 @@
     <string name="filter_by">Filter By</string>
     <string name="brand">Brand</string>
     <string name="color">Color</string>
+    <string name="process">Process</string>
+    <string name="reset">Reset</string>
 </resources>

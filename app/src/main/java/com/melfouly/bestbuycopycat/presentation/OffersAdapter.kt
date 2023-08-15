@@ -1,4 +1,4 @@
-package com.melfouly.bestbuycopycat
+package com.melfouly.bestbuycopycat.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,32 +1,43 @@
-package com.melfouly.bestbuycopycat
+package com.melfouly.bestbuycopycat.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.melfouly.bestbuycopycat.R
 import com.melfouly.bestbuycopycat.databinding.FragmentDealsBinding
 import com.melfouly.bestbuycopycat.databinding.SortBottomSheetDialogBinding
-import com.melfouly.bestbuycopycat.model.Product
+import com.melfouly.bestbuycopycat.domain.model.CategoryResponse
+import com.melfouly.bestbuycopycat.domain.model.CategoryState
+import com.melfouly.bestbuycopycat.domain.usecase.MealsUseCase
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.SingleObserver
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class DealsFragment : Fragment() {
-
+@AndroidEntryPoint
+class DealsFragment: Fragment() {
     private lateinit var binding: FragmentDealsBinding
+    @Inject
+    lateinit var useCase: MealsUseCase
     private lateinit var adapter: DealsAdapter
     private lateinit var sortBottomSheetDialog: BottomSheetDialog
     private lateinit var sortBinding: SortBottomSheetDialogBinding
-
-    private val dealsList = listOf<Product>(
-        Product("Gift Card EGP100", "5.0", "EGP100.00", R.drawable.child_laptop),
-        Product("Gift Card EGP300", "5.0", "EGP300.00", R.drawable.child_laptop),
-        Product("Gift Card EGP500", "5.0", "EGP500.00", R.drawable.child_laptop),
-        Product("Gift Card EGP1000", "4.9", "EGP1000.00", R.drawable.child_laptop)
-    )
+    private lateinit var categoriesDisposable: Disposable
+    private val _categoryState = MutableLiveData(CategoryState(isLoading = true))
+    private val categoryState: LiveData<CategoryState> get() = _categoryState
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +46,22 @@ class DealsFragment : Fragment() {
         // Inflate the layout for this fragment.
         binding = FragmentDealsBinding.inflate(inflater)
 
+            getCategories()
+
+        categoryState.observe(this.viewLifecycleOwner) {
+            if(it.isLoading) {
+                binding.progressBar.visibility = View.VISIBLE
+                checkDesignLayout()
+            } else if (it.success != null) {
+                binding.progressBar.visibility = View.GONE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(requireActivity(), "Error: ${it.error}", Toast.LENGTH_SHORT).show()
+            }
+            Log.d("TAG", "onCreateView: checkDesign called")
+        }
+
         setupBottomSheet()
-        checkDesignLayout()
 
         binding.designLayoutButton.setOnClickListener {
             changeDesignLayout()
@@ -60,6 +85,41 @@ class DealsFragment : Fragment() {
         return binding.root
     }
 
+    private fun getCategories() {
+        val categoriesObservables = useCase.getCategories() // Create Observable
+        categoriesObservables.subscribeOn(Schedulers.io()) // Upstream in IO thread
+            .observeOn(AndroidSchedulers.mainThread()) // Downstream in Main thread
+            .subscribe(setCategoriesObserver())
+    }
+
+    private fun setCategoriesObserver(): SingleObserver<CategoryResponse> {
+        return object : SingleObserver<CategoryResponse> {
+            override fun onSubscribe(d: Disposable) {
+                categoriesDisposable = d
+            }
+
+            override fun onSuccess(t: CategoryResponse) {
+                _categoryState.value?.let {
+                    it.isLoading = false
+                    it.success = t
+                }
+                adapter.submitList(t.categories)
+                binding.recyclerView.adapter = adapter
+                binding.progressBar.visibility = View.GONE
+
+            }
+
+            override fun onError(e: Throwable) {
+                _categoryState.value?.let {
+                    it.isLoading = false
+                    it.error = e.message
+                }
+                Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Log.d("TAG", "onError: categoriesObserver: ${e.message}")
+            }
+        }
+    }
+
     private fun setupBottomSheet() {
         sortBinding = SortBottomSheetDialogBinding.inflate(layoutInflater)
         sortBottomSheetDialog = BottomSheetDialog(requireActivity())
@@ -73,7 +133,7 @@ class DealsFragment : Fragment() {
                 manager.orientation = GridLayoutManager.VERTICAL
                 binding.recyclerView.layoutManager = manager
                 adapter = DealsAdapter(1)
-                adapter.submitList(dealsList)
+                adapter.submitList(categoryState.value?.success?.categories)
                 binding.recyclerView.adapter = adapter
             }
 
@@ -82,7 +142,7 @@ class DealsFragment : Fragment() {
                 manager.orientation = LinearLayoutManager.VERTICAL
                 binding.recyclerView.layoutManager = manager
                 adapter = DealsAdapter(0)
-                adapter.submitList(dealsList)
+                adapter.submitList(categoryState.value?.success?.categories)
                 binding.recyclerView.adapter = adapter
             }
         }
@@ -201,6 +261,11 @@ class DealsFragment : Fragment() {
     private fun showFilterBottomSheet() {
         val bottomSheetFragment = FilterBottomSheetFragment()
         bottomSheetFragment.show(parentFragmentManager, null)
+    }
+
+    override fun onDestroy() {
+        categoriesDisposable.dispose()
+        super.onDestroy()
     }
 
 

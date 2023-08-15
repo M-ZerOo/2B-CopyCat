@@ -34,4 +34,6 @@
     <string name="filter_by">التصنيف ب</string>
     <string name="brand">الماركة</string>
     <string name="color">اللون</string>
+    <string name="process">تنفيذ</string>
+    <string name="reset">إعادة تعيين</string>
 </resources>

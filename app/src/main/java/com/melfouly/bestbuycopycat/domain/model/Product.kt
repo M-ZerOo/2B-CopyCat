@@ -1,4 +1,4 @@
-package com.melfouly.bestbuycopycat.model
+package com.melfouly.bestbuycopycat.domain.model
 
 import androidx.annotation.DrawableRes
 

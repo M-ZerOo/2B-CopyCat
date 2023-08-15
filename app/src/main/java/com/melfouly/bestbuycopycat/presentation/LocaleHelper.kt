@@ -1,4 +1,4 @@
-package com.melfouly.bestbuycopycat
+package com.melfouly.bestbuycopycat.presentation
 
 import android.content.Context
 import android.util.Log

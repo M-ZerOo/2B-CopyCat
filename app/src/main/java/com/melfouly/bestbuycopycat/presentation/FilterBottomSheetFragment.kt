@@ -1,18 +1,28 @@
-package com.melfouly.bestbuycopycat
+package com.melfouly.bestbuycopycat.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.melfouly.bestbuycopycat.R
 import com.melfouly.bestbuycopycat.databinding.FragmentFilterBottomSheetBinding
+import com.melfouly.bestbuycopycat.domain.model.CategoryResponse
+import com.melfouly.bestbuycopycat.domain.model.CategoryState
+import com.melfouly.bestbuycopycat.domain.usecase.MealsUseCase
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.core.SingleObserver
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FilterBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFilterBottomSheetBinding
@@ -25,9 +35,6 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
         binding = FragmentFilterBottomSheetBinding.inflate(inflater)
 
         dialog?.setOnShowListener {
-//            val bottomSheetDialog = it as BottomSheetDialog
-//            val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.)
-//            val behavior = BottomSheetBehavior.from(bottomSheet!!)
             val bottomSheet = it as BottomSheetDialog
             val bottomSheetBehavior = bottomSheet.behavior
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
@@ -97,7 +104,13 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
             }
         }
 
+        binding.processButton.setOnClickListener {
+            dismiss()
+        }
 
+        binding.resetButton.setOnClickListener {
+            dismiss()
+        }
 
         return binding.root
     }

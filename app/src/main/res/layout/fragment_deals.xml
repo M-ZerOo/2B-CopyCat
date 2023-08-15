@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DealsFragment">
+    tools:context=".presentation.DealsFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sort_button"
@@ -63,5 +63,16 @@
         app:spanCount="2"
         tools:itemCount="5"
         tools:listitem="@layout/deals_list_item" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
