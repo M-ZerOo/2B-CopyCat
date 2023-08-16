@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.melfouly.bestbuycopycat.databinding.DealsGridItemBinding
 import com.melfouly.bestbuycopycat.databinding.DealsListItemBinding
-import com.melfouly.bestbuycopycat.domain.model.Category
+import com.melfouly.bestbuycopycat.domain.model.Product
 
 private const val VIEW_TYPE_LIST = 0
 private const val VIEW_TYPE_GRID = 1
 
 class DealsAdapter(private val usedDesignLayout: Int) :
-    ListAdapter<Category, RecyclerView.ViewHolder>(DealDiffCallback()) {
+    ListAdapter<Product, RecyclerView.ViewHolder>(DealDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return usedDesignLayout
@@ -23,11 +23,11 @@ class DealsAdapter(private val usedDesignLayout: Int) :
     class ListViewHolder(private val binding: DealsListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Category) {
-            binding.title.text = item.strCategory
-            binding.rate.text = "5.0"
-            binding.price.text = "EGP100"
-            Glide.with(binding.root).load(item.strCategoryThumb).into(binding.imageView)
+        fun bind(item: Product) {
+            binding.title.text = item.name
+            binding.rate.text = item.rate
+            binding.price.text = item.price
+            Glide.with(binding.root).load(item.image).into(binding.imageView)
         }
 
         companion object {
@@ -43,11 +43,11 @@ class DealsAdapter(private val usedDesignLayout: Int) :
     class GridViewHolder(private val binding: DealsGridItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Category) {
-            binding.title.text = item.strCategory
-            binding.rate.text = "5.0"
-            binding.price.text = "EGP100"
-            Glide.with(binding.root).load(item.strCategoryThumb).into(binding.imageView)
+        fun bind(item: Product) {
+            binding.title.text = item.name
+            binding.rate.text = item.rate
+            binding.price.text = item.price
+            Glide.with(binding.root).load(item.image).into(binding.imageView)
         }
 
         companion object {
@@ -71,24 +71,24 @@ class DealsAdapter(private val usedDesignLayout: Int) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ListViewHolder -> {
-                val item = getItem(position) as Category
+                val item = getItem(position) as Product
                 holder.bind(item)
             }
 
             is GridViewHolder -> {
-                val item = getItem(position) as Category
+                val item = getItem(position) as Product
                 holder.bind(item)
             }
         }
     }
 }
 
-class DealDiffCallback : DiffUtil.ItemCallback<Category>() {
-    override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-        return oldItem.idCategory == newItem.idCategory
+class DealDiffCallback : DiffUtil.ItemCallback<Product>() {
+    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
         return oldItem == newItem
     }
 }

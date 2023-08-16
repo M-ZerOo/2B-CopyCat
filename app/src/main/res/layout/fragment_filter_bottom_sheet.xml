@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/brand_button"
+        android:id="@+id/category_button"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:backgroundTint="@color/white"
         android:gravity="start|center_vertical"
-        android:text="@string/brand"
+        android:text="@string/category"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -40,31 +40,13 @@
         app:layout_constraintTop_toBottomOf="@id/filter_by" />
 
     <RadioGroup
-        android:id="@+id/brand_radio_group"
+        android:id="@+id/category_radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/brand_button">
-
-        <RadioButton
-            android:id="@+id/x_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="X" />
-
-        <RadioButton
-            android:id="@+id/y_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Y" />
-
-        <RadioButton
-            android:id="@+id/z_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Z" />
+        app:layout_constraintTop_toBottomOf="@id/category_button">
 
     </RadioGroup>
 
@@ -87,7 +69,7 @@
         app:layout_constraintBottom_toTopOf="@id/color_radio_group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/brand_radio_group" />
+        app:layout_constraintTop_toBottomOf="@id/category_radio_group" />
 
     <RadioGroup
         android:id="@+id/color_radio_group"

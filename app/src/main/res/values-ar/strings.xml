@@ -32,7 +32,7 @@
     <string name="quantity_low_to_high">الكمية من الأدنى إلى الأعلى</string>
     <string name="quantity_high_to_low">الكمية من الأعلى إلى الأدنى</string>
     <string name="filter_by">التصنيف ب</string>
-    <string name="brand">الماركة</string>
+    <string name="category">الفئة</string>
     <string name="color">اللون</string>
     <string name="process">تنفيذ</string>
     <string name="reset">إعادة تعيين</string>
