@@ -36,4 +36,6 @@
     <string name="color">اللون</string>
     <string name="process">تنفيذ</string>
     <string name="reset">إعادة تعيين</string>
+    <string name="signed_in_as">Signed in as:</string>
+    <string name="logout">Logout</string>
 </resources>

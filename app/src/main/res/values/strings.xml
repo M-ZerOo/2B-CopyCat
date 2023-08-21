@@ -37,4 +37,10 @@
     <string name="color">Color</string>
     <string name="process">Process</string>
     <string name="reset">Reset</string>
+    // Facebook Integration
+    <string name="facebook_app_id" translatable="false">3424576437759069</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb3424576437759069</string>
+    <string name="facebook_client_token" translatable="false">a45169284fb6f09296aaacbfe7adfee5ed8ce0fc73c74019f697e31e83b41660</string>
+    <string name="signed_in_as">Signed in as:</string>
+    <string name="logout">Logout</string>
 </resources>
