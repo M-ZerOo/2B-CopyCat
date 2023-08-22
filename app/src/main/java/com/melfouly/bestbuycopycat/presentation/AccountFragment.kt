@@ -96,14 +96,15 @@ class AccountFragment : Fragment() {
                                     signedInAs.visibility = View.VISIBLE
                                     fullName.visibility = View.VISIBLE
                                     fullName.text = `object`?.getString("name")
-//                            email.visibility = View.VISIBLE
-//                            email.text = `object`?.getString("email")
+                                    email.visibility = View.VISIBLE
+                                    email.text = `object`?.getString("email")
                                     facebookLogin.visibility = View.GONE
                                     facebookLogout.visibility = View.VISIBLE
+                                    googleLogin.visibility = View.GONE
                                 }
                             }
                         val parameter = Bundle()
-                        parameter.putString("fields", "name")
+                        parameter.putString("fields", "name,email")
                         request.parameters = parameter
                         request.executeAsync()
                     } catch (e: Exception) {
@@ -117,14 +118,14 @@ class AccountFragment : Fragment() {
         binding.facebookLogin.setOnClickListener {
             // Tries to log the user with the requested read permissions.
             LoginManager.getInstance()
-                .logInWithReadPermissions(this, callBackManager, listOf("public_profile"))
+                .logInWithReadPermissions(this, callBackManager, listOf("public_profile,email"))
         }
 
         binding.googleLogin.setOnClickListener {
             googleSignIn()
         }
 
-        /*binding.facebookLogout.setOnClickListener {
+        binding.facebookLogout.setOnClickListener {
             LoginManager.getInstance().logOut()
             binding.apply {
                 signedInAs.visibility = View.GONE
@@ -132,8 +133,9 @@ class AccountFragment : Fragment() {
                 email.visibility = View.GONE
                 facebookLogin.visibility = View.VISIBLE
                 facebookLogout.visibility = View.GONE
+                googleLogin.visibility = View.VISIBLE
             }
-        }*/
+        }
 
         binding.googleLogout.setOnClickListener {
             firebaseAuth.signOut()
@@ -145,6 +147,7 @@ class AccountFragment : Fragment() {
                         email.visibility = View.GONE
                         googleLogin.visibility = View.VISIBLE
                         googleLogout.visibility = View.GONE
+                        facebookLogin.visibility = View.VISIBLE
                     }
                 } else {
                     Log.d("TAG", "onCreateView: google logout failed")
@@ -198,6 +201,7 @@ class AccountFragment : Fragment() {
         binding.fullName.text = account.displayName
         binding.googleLogin.visibility = View.GONE
         binding.googleLogout.visibility = View.VISIBLE
+        binding.facebookLogin.visibility = View.GONE
     }
 
 
