@@ -41,9 +41,9 @@
     <string name="logout">Logout</string>
 
     // Facebook Integration
-    <string name="facebook_app_id" translatable="false">3424576437759069</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb3424576437759069</string>
-    <string name="facebook_client_token" translatable="false">a45169284fb6f09296aaacbfe7adfee5ed8ce0fc73c74019f697e31e83b41660</string>
-    <string name="facebook_base_client_token" translatable="false">4fdf01c288d3b387452b229aee4bf09e</string>
+    <string name="facebook_app_id" translatable="false"></string>
+    <string name="fb_login_protocol_scheme" translatable="false"></string>
+    <string name="facebook_client_token" translatable="false"></string>
+    <string name="facebook_base_client_token" translatable="false"></string>
     <string name="date_of_birth">Date of Birth</string>
 </resources>
