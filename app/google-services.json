@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "329823699709",
+    "project_id": "bestbuycopycat",
+    "storage_bucket": "bestbuycopycat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329823699709:android:e1534bc972317314eb7494",
+        "android_client_info": {
+          "package_name": "com.melfouly.bestbuycopycat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329823699709-hs4mkmmsnkaso2hs5k2sj45rjc0ngril.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.melfouly.bestbuycopycat",
+            "certificate_hash": "8eb3d178027d5fb4d90ade1555a81f27a78ba07b"
+          }
+        },
+        {
+          "client_id": "329823699709-sdfg2s6bpo12hl5nt108mt2rv3vg9fbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1wnpc2CVMf1coe6MaQ695B-NS4gdgM8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329823699709-sdfg2s6bpo12hl5nt108mt2rv3vg9fbq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

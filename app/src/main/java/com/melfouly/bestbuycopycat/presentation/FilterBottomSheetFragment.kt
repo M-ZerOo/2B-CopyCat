@@ -64,8 +64,11 @@ class FilterBottomSheetFragment : BottomSheetDialogFragment() {
 
         dialog?.setOnShowListener {
             val bottomSheet = it as BottomSheetDialog
-            val bottomSheetBehavior = bottomSheet.behavior
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            val bottomSheetInternal = bottomSheet.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+//            val bottomSheetBehavior = bottomSheet.behavior
+//            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            BottomSheetBehavior.from(bottomSheetInternal!!).peekHeight = context?.resources?.displayMetrics?.heightPixels!!
+//            bottomSheetBehavior.peekHeight = requireContext().resources.displayMetrics.heightPixels
         }
 
         binding.categoryButton.setOnClickListener {

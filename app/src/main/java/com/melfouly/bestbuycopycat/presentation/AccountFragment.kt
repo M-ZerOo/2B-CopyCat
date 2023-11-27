@@ -3,27 +3,24 @@ package com.melfouly.bestbuycopycat.presentation
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.FacebookSdk
 import com.facebook.GraphRequest
-import com.facebook.login.LoginBehavior
+import com.facebook.appevents.AppEventsConstants
+import com.facebook.appevents.AppEventsLogger
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -39,6 +36,7 @@ class AccountFragment : Fragment() {
     private lateinit var callBackManager: CallbackManager
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var logger: AppEventsLogger
 
 
     override fun onCreateView(
@@ -47,6 +45,8 @@ class AccountFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment.
         binding = FragmentAccountBinding.inflate(layoutInflater)
+        logger = AppEventsLogger.newLogger(requireActivity())
+        logger.logEvent(AppEventsConstants.EVENT_NAME_VIEWED_CONTENT);
 
         firebaseAuth = FirebaseAuth.getInstance()
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
